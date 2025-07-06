@@ -1,9 +1,16 @@
 [submodule "Tac3D"]
 	path = Tac3D
 	url = https://github.com/ChangerC77/Tac-3D.git
+	branch = master
 [submodule "Robotiq-Gripper"]
 	path = Robotiq-Gripper
 	url = https://github.com/ChangerC77/Robotiq-Gripper.git
+	branch = Prometheus
 [submodule "xArm-Python-SDK"]
 	path = xArm-Python-SDK
 	url = https://github.com/ChangerC77/xArm-Python-SDK.git
+	branch = Prometheus
+[submodule "gello_teleoperation"]
+	path = gello_teleoperation
+	url = https://github.com/ChangerC77/gello_teleoperation.git
+	branch = Prometheus
