@@ -11,13 +11,14 @@ else
     return 1
 fi
 
+PROJ_MAIN_DIR="$HOME/Prometheus"
 GELLO_DIR="$HOME/Prometheus/gello_teleoperation"
 ROBOTIQ_DIR="$HOME/Prometheus/Robotiq-Gripper"
 RECORD_DIR="$HOME/Prometheus/xArm-Python-SDK/control"
 CAMERA_DIR="$HOME/Prometheus/data_collection"
 TACTILE_DIR="$HOME/Prometheus/data_collection"
-TACTILE_CORE="$HOME/Prometheus/Tac-3D/Tac3D-SDK-v3.3.0/Tac3D-Core/linux-x86_64/Tac3D"
-TACTILE_CONFIG="$HOME/Prometheus/Tac-3D/Tac3D-SDK-v3.3.0/Tac3D-Core/linux-x86_64/config"
+TACTILE_CORE="$HOME/Prometheus/Tac3D/Tac3D-SDK-v3.3.0/Tac3D-Core/linux-x86_64/Tac3D"
+TACTILE_CONFIG="$HOME/Prometheus/Tac3D/Tac3D-SDK-v3.3.0/Tac3D-Core/linux-x86_64/config"
 TAC_SN1="DL1-GWM0001"
 TAC_SN2="DL1-GWM0002"
 
@@ -27,7 +28,7 @@ GELLO_OFFSET_CMD="python scripts/gello_get_offset.py"
 GELLO_MAIN_CMD="python experiments/run_env.py --agent=gello"
 ROBOTIQ_INIT_CMD="python gripper_init.py"
 ROBOTIQ_CMD="python gripper_force_control_node.py"
-TACTILE_PUB_CMD="python ./tactile_pub.py"
+TACTILE_PUB_CMD="python ./Robotiq-Gripper/tactile_pub.py"
 RECORD_CMD="python ./gello_record_trajectory.py --root_dir=${ROOT_DIR} --traj_number=${TRAJ_NUMBER}"
 CAMERA_CMD="python ./collect_rgbd.py --root_dir=${ROOT_DIR} --traj_number=${TRAJ_NUMBER}"
 GRIPPRER_INFO_CMD="python ./save_gripper_info.py --root_dir=${ROOT_DIR} --traj_number=${TRAJ_NUMBER}"
@@ -121,14 +122,14 @@ start_tactile_terminal() {
 
     # 添加第二个标签页（触觉传感器1）
     gnome-terminal -- bash -c \
-        "cd '$TACTILE_DIR' && echo -e '${YELLOW}启动触觉传感器1...${NC}' && $TAC_SENSOR1_START; exec bash"
+        "cd '$PROJ_MAIN_DIR' && echo -e '${YELLOW}启动触觉传感器1...${NC}' && $TAC_SENSOR1_START; exec bash"
     
     # 添加第三个标签页（触觉传感器2）
     gnome-terminal -- bash -c \
-        "cd '$TACTILE_DIR' && echo -e '${YELLOW}启动触觉传感器2...${NC}' && $TAC_SENSOR2_START; exec bash"
+        "cd '$PROJ_MAIN_DIR' && echo -e '${YELLOW}启动触觉传感器2...${NC}' && $TAC_SENSOR2_START; exec bash"
         
     gnome-terminal --tab -- bash -c \
-        "cd '$ROBOTIQ_DIR' && echo -e '${YELLOW}启动触觉发布程序...${NC}' && $TACTILE_PUB_CMD; exec bash"
+        "cd '$PROJ_MAIN_DIR' && echo -e '${YELLOW}启动触觉发布程序...${NC}' && $TACTILE_PUB_CMD; exec bash"
     
     sleep 0.5
     return 0
