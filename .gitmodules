@@ -1,0 +1,9 @@
+[submodule "Tac3D"]
+	path = Tac3D
+	url = https://github.com/ChangerC77/Tac-3D.git
+[submodule "Robotiq-Gripper"]
+	path = Robotiq-Gripper
+	url = https://github.com/ChangerC77/Robotiq-Gripper.git
+[submodule "xArm-Python-SDK"]
+	path = xArm-Python-SDK
+	url = https://github.com/ChangerC77/xArm-Python-SDK.git
